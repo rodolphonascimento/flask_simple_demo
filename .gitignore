@@ -51,5 +51,6 @@ Thumbs.db
 # Python
 venv/
 instance/db.sqlite3
-application/__pycache__/
 __pycache__/
+application/__pycache__/
+application/providers/__pycache__/
