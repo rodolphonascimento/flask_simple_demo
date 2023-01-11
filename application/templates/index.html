@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+<br/>
+<br/>
+
+
+
+<div class="container">
+    <h2>Providers</h2>
+          <div class="table-responsive">
+            <table class="table table-striped table-sm">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Company</th>
+                  <th>Amount Products</th>
+                  <th>Created At</th>
+                </tr>
+              </thead>
+              <tbody>
+                {%for provider in providers%}
+                <tr>
+                  <td>{{provider.id}}</td>
+                  <td>{{provider.name}}</td>
+                  <td>{{provider.company}}</td>
+                  <td>{{provider.amount_products}}</td>
+                  <td>{{provider.created_at}}</td>
+                </tr>
+                {%endfor%}
+             
+                
+              </tbody>
+            </table>
+          </div>
+    <br/><br/>
+</div>
+
+{% endblock %}

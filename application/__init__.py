@@ -3,6 +3,7 @@ from flask import Flask
 from application import routes
 from dotenv import dotenv_values
 from application.models import init_database
+from flask_bootstrap import Bootstrap
 
 
 
@@ -13,6 +14,8 @@ def create_app():
     app.config.update(config)
     
     routes.init_routes(app)
+    
+    Bootstrap(app)
     
     init_database(app)
 

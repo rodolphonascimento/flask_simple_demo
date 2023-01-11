@@ -1,5 +1,5 @@
 from . import providers
-from flask import request, session
+from flask import request, make_response, session
 from application.models import Providers, get_database
 import json
 
@@ -11,13 +11,21 @@ def insert():
     data = request.data.decode("utf-8")
     data = json.loads(data)
     
-    provider = Providers()
-    provider.name = "xx"
-    db = get_database()
-    db.session.add(provider)
-    db.session.commit()
-    
-    pass
+    try:
+        provider = Providers()
+        provider.name = data.get("name", "")
+        provider.company = data.get("company", "")
+        provider.amount_products = data.get("amount_products", "")
+        
+        db = get_database()
+        db.session.add(provider)
+        db.session.commit()
+        response = make_response("", 200)
+        
+    except Exception as e:
+        response = make_response(e, 401)
+        
+    return response
 
 
 @providers.route('/api/providers/update/', methods=["PUT"])
