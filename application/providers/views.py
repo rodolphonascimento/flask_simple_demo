@@ -1,13 +1,22 @@
 from . import providers
-from flask import Flask, flash, request, redirect, session
-
+from flask import request, session
+from application.models import Providers, get_database
+import json
 
 
 
 
 @providers.route('/api/providers/insert/', methods=["POST"])
 def insert():
-    request.data
+    data = request.data.decode("utf-8")
+    data = json.loads(data)
+    
+    provider = Providers()
+    provider.name = "xx"
+    db = get_database()
+    db.session.add(provider)
+    db.session.commit()
+    
     pass
 
 

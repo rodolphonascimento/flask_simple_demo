@@ -2,10 +2,8 @@
 from flask import Flask
 from application import routes
 from dotenv import dotenv_values
-from flask_sqlalchemy import SQLAlchemy
 from application.models import init_database
 
-db = SQLAlchemy
 
 
 def create_app():
