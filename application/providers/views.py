@@ -13,6 +13,7 @@ def insert():
     
     try:
         provider = Providers()
+        provider.id = data.get("id", "")
         provider.name = data.get("name", "")
         provider.company = data.get("company", "")
         provider.amount_products = data.get("amount_products", "")
