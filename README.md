@@ -4,6 +4,12 @@
 A simple API Flask demo project
 
 
+
+
+
+
+
+
 ## API documentation
 
 #### Authenticate and get valid token
@@ -29,3 +35,8 @@ A simple API Flask demo project
 | Parâmetro   | Tipo       | Descrição                                   |
 | :---------- | :--------- | :------------------------------------------ |
 | `id`      | `string` | *Optional*. Provider ID |
+
+#### add(num1, num2)
+
+Recebe dois números e retorna a sua soma.
+
