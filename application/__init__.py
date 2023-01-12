@@ -4,6 +4,7 @@ from application import routes
 from dotenv import dotenv_values
 from application.models import init_database
 from flask_bootstrap import Bootstrap
+from application.authentication import create_jwt
 
 
 
@@ -18,5 +19,7 @@ def create_app():
     Bootstrap(app)
     
     init_database(app)
+    
+    create_jwt(app)
 
     return app

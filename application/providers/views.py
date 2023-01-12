@@ -2,15 +2,21 @@ from . import providers
 from flask import request, make_response
 from application.models import Providers, get_database
 import json
-
-
+from flask_jwt import jwt_required, current_identity
 
 
 def __handle_error(exception):
     return make_response(f'Error trying to handle data. Message {str(exception)}' , 400)
 
 
+
+@providers.route('/api/whois', methods=["GET"])
+@jwt_required()
+def protected():
+    return '%s' % current_identity
+
 @providers.route('/api/providers/insert/', methods=["POST"])
+@jwt_required()
 def insert():
     data = request.data.decode("utf-8")
     data = json.loads(data)
@@ -33,6 +39,7 @@ def insert():
         
 
 @providers.route('/api/providers/update/<id>', methods=["PUT"])
+@jwt_required()
 def update(id):
     data = request.data.decode("utf-8")
     data = json.loads(data)
@@ -58,6 +65,7 @@ def update(id):
 
 @providers.route('/api/providers/list/<id>', methods=["GET"])
 @providers.route('/api/providers/list/', methods=["GET"])
+@jwt_required()
 def list(id=None):
     try:
         db = get_database()
@@ -78,6 +86,7 @@ def list(id=None):
 
 
 @providers.route('/api/providers/delete/<id>', methods=["DELETE"])
+@jwt_required()
 def delete(id):
     try:
         provider = Providers.query.filter_by(id=id).first()
