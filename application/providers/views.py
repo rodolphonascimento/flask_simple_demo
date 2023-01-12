@@ -6,6 +6,10 @@ import json
 
 
 
+def __handle_error(exception):
+    return make_response(f'Error trying to handle data. Message {str(exception)}' , 400)
+
+
 @providers.route('/api/providers/insert/', methods=["POST"])
 def insert():
     data = request.data.decode("utf-8")
@@ -21,10 +25,10 @@ def insert():
         db = get_database()
         db.session.add(provider)
         db.session.commit()
-        return make_response("", 201)
+        return make_response("Success", 201)
         
     except Exception as e:
-        return make_response(str(e), 400)
+        return __handle_error(e)
         
         
 
@@ -36,7 +40,7 @@ def update(id):
     try:
         provider = Providers.query.filter_by(id=id).first()
         if provider == None:
-            return make_response('', 404)
+            return make_response(f'Provider ID not found: {id}', 404)
         
         provider.name = data.get("name", provider.name )
         provider.company = data.get("company", provider.company)
@@ -48,7 +52,7 @@ def update(id):
         return make_response(output, 200)
         
     except Exception as e:
-        return make_response(str(e), 400)
+        return __handle_error(e)
     
 
 
@@ -64,12 +68,12 @@ def list(id=None):
         
         output = [Providers.serialize(provider) for provider in providers]
         if len(output) == 0:
-            return make_response(output, 404)
+            return make_response(f'Provider ID not found: {id}', 404) 
         else:
             return make_response(output, 200)
         
     except Exception as e:
-        return make_response(str(e), 400)        
+        return __handle_error(e)
 
 
 
@@ -78,7 +82,7 @@ def delete(id):
     try:
         provider = Providers.query.filter_by(id=id).first()
         if provider == None:
-            return make_response('', 404)        
+            return make_response(f'Provider ID not found: {id}', 404)        
        
         db = get_database()
         db.session.delete(provider)
@@ -86,4 +90,4 @@ def delete(id):
         return make_response("", 200)
         
     except Exception as e:
-        return make_response(str(e), 400)
+        return __handle_error(e)
