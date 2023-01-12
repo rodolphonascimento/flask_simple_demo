@@ -54,5 +54,3 @@ instance/db.sqlite3
 __pycache__/
 application/__pycache__/
 application/providers/__pycache__/
-application/__pycache__/models.cpython-38.pyc
-application/providers/__pycache__/views.cpython-38.pyc
