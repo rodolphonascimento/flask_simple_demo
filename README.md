@@ -1,11 +1,17 @@
 # flask_simple_demo
 
 
-A simple API Flask demo project
+A simple API Flask demo project for maintanance Providers local database 
 
 
 
+## How to run
 
+Para fazer o deploy desse projeto rode
+
+```bash
+  python3 app.py
+```
 
 
 
