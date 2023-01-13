@@ -1,14 +1,3 @@
-# flask_simple_demo
-
-
-A simple API Flask demo project
-
-
-
-
-
-
-
 
 ## API documentation
 
@@ -18,8 +7,9 @@ A simple API Flask demo project
   POST /api/auth
 ```
 
-  Payload:
+Payload:
 ```json
+
   {
     "username": "scott",
     "password": "cat"
@@ -28,18 +18,18 @@ A simple API Flask demo project
 
 
 
-
-#### Returns one or more providers
+#### Insert a Provider
 
 ```http
-  GET /api/providers/list/<id>
+  POST /api/providers/insert
 ```
 
-| Parâmetro   | Tipo       | Descrição                                   |
-| :---------- | :--------- | :------------------------------------------ |
-| `id`      | `string` | *Optional*. Provider ID |
-
-#### add(num1, num2)
-
-Recebe dois números e retorna a sua soma.
-
+Payload:
+```json
+{
+    "id": "BRCRD0028MG2RHMZ",
+    "name": "Alice Chains",
+    "company": "Apple",
+    "amount_products": 150
+}
+```
