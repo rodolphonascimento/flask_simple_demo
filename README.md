@@ -3,7 +3,7 @@
 
 #### Authenticate and get valid token
 
-```http
+```sh
   POST /api/auth
 ```
 
@@ -20,7 +20,7 @@ Payload:
 
 #### Insert a Provider
 
-```http
+```sh
   POST /api/providers/insert
 ```
 
