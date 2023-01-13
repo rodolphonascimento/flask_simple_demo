@@ -16,13 +16,16 @@ A simple API Flask demo project
 
 ```http
   POST /api/auth
+```
 
   Payload:
+```json
   {
     "username": "scott",
     "password": "cat"
   }
 ```
+
 
 
 
