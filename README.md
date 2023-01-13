@@ -12,7 +12,7 @@ First, install python libraries used:
   pip install -r requirements.txt
 ```
 
-Seconde, run the app:
+Second, run the app:
 ```bash
   python3 app.py
 ```
