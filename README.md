@@ -5,10 +5,14 @@ A simple API Flask demo project for maintanance Providers local database
 
 
 
-## How to run
+## How to run it
 
-Para fazer o deploy desse projeto rode
+First, install python libraries used:
+```bash
+  pip install -r requirements.txt
+```
 
+Seconde, run the app:
 ```bash
   python3 app.py
 ```
